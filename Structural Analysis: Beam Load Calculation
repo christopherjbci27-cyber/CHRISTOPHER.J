@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main() {
+    float load, length, youngs_modulus, moment_of_inertia;
+    float max_bending_moment, max_deflection;
+    printf("--- Simply Supported Beam Calculator ---\n");
+    printf("Enter Point Load (P) in kN: ");
+    scanf("%f", &load);
+    printf("Enter Span Length (L) in meters: ");
+    scanf("%f", &length);
+    printf("Enter Young's Modulus (E) in kN/m2: ");
+    scanf("%f", &youngs_modulus);
+    printf("Enter Moment of Inertia (I) in m4: ");
+    scanf("%f", &moment_of_inertia);
+    max_bending_moment = (load * length) / 4;
+    max_deflection = (load * length * length * length) / (48 * youngs_modulus * moment_of_inertia);
+    printf("\n--- Results ---\n");
+    printf("Max Bending Moment: %.2f kN-m\n", max_bending_moment);
+    printf("Max Deflection: %.5f meters\n", max_deflection);
+    return 0;
+}
