@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main() {
+    double c, phi, gamma, Df, B;
+    double Nc, Nq, Ny; // Bearing capacity factors
+    printf("--- Terzaghi's Bearing Capacity (Strip Footing) ---\n");
+    printf("Enter Soil Cohesion (c) in kN/m2: ");
+    scanf("%lf", &c);
+    printf("Enter Unit Weight of Soil (gamma) in kN/m3: ");
+    scanf("%lf", &gamma);
+    printf("Enter Depth of Foundation (Df) in m: ");
+    scanf("%lf", &Df);
+    printf("Enter Width of Footing (B) in m: ");
+    scanf("%lf", &B);
+    printf("Enter Bearing Capacity Factors (Nc, Nq, Ny): ");
+    scanf("%lf %lf %lf", &Nc, &Nq, &Ny);
+    double qu = (c * Nc) + (gamma * Df * Nq) + (0.5 * gamma * B * Ny);
+    printf("\nUltimate Bearing Capacity (qu): %.2f kN/m2\n", qu);
+    printf("Safe Bearing Capacity (FOS=3): %.2f kN/m2\n", qu / 3.0);
+    return 0;
+}
