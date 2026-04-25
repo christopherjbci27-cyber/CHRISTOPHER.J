@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    float length, load, distance, shear_force, bending_moment;
+
+    printf("--- Cantilever Beam Analysis (UDL) ---\n");
+
+    // 1. Input Beam Details
+    printf("Enter Total Length of Beam (m): ");
+    scanf("%f", &length);
+    printf("Enter Magnitude of UDL (kN/m): ");
+    scanf("%f", &load);
+    printf("Enter distance from Fixed End to check (m): ");
+    scanf("%f", &distance);
+
+    /* 
+       2. Calculations
+       At distance 'x' from the fixed end:
+       Remaining length = L - x
+       Shear Force (Vx) = w * (L - x)
+       Bending Moment (Mx) = - (w * (L - x)^2) / 2
+    */
+    float remaining_x = length - distance;
+    
+    shear_force = load * remaining_x;
+    bending_moment = (load * remaining_x * remaining_x) / 2.0;
+
+    // 3. Output Results
+    printf("\n--- Results at %.2f m ---\n", distance);
+    printf("Shear Force (V)    : %.2f kN\n", shear_force);
+    printf("Bending Moment (M) : %.2f kNm\n", bending_moment);
+    
+    if (distance == 0) {
+        printf("\nNote: These are the MAXIMUM values (at the fixed support).\n");
+    }
+    printf("---------------------------\n");
+
+    return 0;
+}
