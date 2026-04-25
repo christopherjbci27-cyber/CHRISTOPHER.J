@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+    float P, L, E, I, delta;
+    printf("--- Simple Beam Deflection Calculator ---\n");
+    printf("Enter load P (kN): ");
+    scanf("%f", &P);
+    printf("Enter length L (m): ");
+    scanf("%f", &L);
+    printf("Enter Young's Modulus E (GPa): ");
+    scanf("%f", &E);
+    printf("Enter Moment of Inertia I (m^4): ");
+    scanf("%f", &I);
+    delta = (P * 1000 * (L * L * L)) / (48 * (E * 1e9) * I);
+    printf("Maximum Deflection: %f meters\n", delta);
+    return 0;
+}
