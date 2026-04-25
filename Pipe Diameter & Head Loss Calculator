@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float Q, C, S, D;
+
+    printf("--- Water Pipe Sizing (Hazen-Williams) ---\n");
+
+    // 1. Input Hydraulic Parameters
+    printf("Enter Discharge/Flow Rate (Q) in m3/s: ");
+    scanf("%f", &Q);
+    printf("Enter Pipe Roughness Coefficient (C) [e.g., 140 for PVC, 100 for CI]: ");
+    scanf("%f", &C);
+    printf("Enter Hydraulic Gradient/Slope (S) [m/m]: ");
+    scanf("%f", &S);
+
+    /* 
+       2. Hazen-Williams Formula for Diameter:
+       D = [ Q / (0.278 * C * S^0.54) ] ^ (1 / 2.63)
+    */
+    D = pow((Q / (0.278 * C * pow(S, 0.54))), (1.0 / 2.63));
+
+    // 3. Output Results
+    printf("\n--- Design Result ---\n");
+    printf("Required Inner Diameter: %.3f meters\n", D);
+    printf("Required Inner Diameter: %.1f mm\n", D * 1000.0);
+    printf("Suggested Standard Pipe: %.0f mm\n", ceil(D * 1000.0 / 25.0) * 25.0); 
+    printf("---------------------\n");
+
+    return 0;
+}
