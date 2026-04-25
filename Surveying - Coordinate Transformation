@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+#define PI 3.14159265
+int main() {
+    double distance, bearing_deg, x, y;
+    printf("--- Polar to Cartesian Conversion ---\n");
+    printf("Enter Distance: ");
+    scanf("%lf", &distance);
+    printf("Enter Bearing (degrees): ");
+    scanf("%lf", &bearing_deg);
+    double bearing_rad = bearing_deg * (PI / 180.0);
+    x = distance * sin(bearing_rad);
+    y = distance * cos(bearing_rad);
+    printf("Coordinates: North=%.2f, East=%.2f\n", y, x);
+    return 0;
+}
