@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float rise, run, grade, angle;
+
+    printf("Enter Rise (Vertical Distance): ");
+    scanf("%f", &rise);
+    printf("Enter Run (Horizontal Distance): ");
+    scanf("%f", &run);
+
+    grade = (rise / run) * 100;
+    angle = atan(rise / run) * (180 / 3.14159);
+
+    printf("\nSlope Grade: %.2f%%", grade);
+    printf("\nSlope Angle: %.2f degrees\n", angle);
+
+    return 0;
+}
