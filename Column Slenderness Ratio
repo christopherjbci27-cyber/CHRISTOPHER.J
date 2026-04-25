@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    float length, breadth, ratio;
+
+    printf("Enter Effective Length of Column (m): ");
+    scanf("%f", &length);
+    printf("Enter Least Lateral Dimension (m): ");
+    scanf("%f", &breadth);
+
+    ratio = length / breadth;
+
+    printf("Slenderness Ratio: %.2f\n", ratio);
+
+    if (ratio < 12)
+        printf("Result: This is a SHORT Column.\n");
+    else
+        printf("Result: This is a SLENDER (Long) Column.\n");
+
+    return 0;
+}
