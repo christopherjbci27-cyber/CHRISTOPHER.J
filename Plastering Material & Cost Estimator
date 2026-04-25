@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    float area, thickness, dry_vol, ratio_sum, cement_vol, sand_vol;
+    float cement_price, sand_price, total_cost;
+    int bags;
+
+    // 1. Input Wall Details
+    printf("Enter Wall Area (sq. meters): ");
+    scanf("%f", &area);
+    printf("Enter Plaster Thickness (mm): ");
+    scanf("%f", &thickness);
+
+    // 2. Input Prices
+    printf("Enter Price per Cement Bag: ");
+    scanf("%f", &cement_price);
+    printf("Enter Price per m3 of Sand: ");
+    scanf("%f", &sand_price);
+
+    /* 
+       3. Calculations (Standard 1:6 Mix Ratio)
+       Thickness converted to meters (mm/1000)
+       Dry Volume Factor for plaster is 1.33 
+    */
+    dry_vol = (area * (thickness / 1000.0)) * 1.33;
+    ratio_sum = 1 + 6; // 1 part cement, 6 parts sand
+
+    cement_vol = (1 / ratio_sum) * dry_vol;
+    sand_vol = (6 / ratio_sum) * dry_vol;
+    bags = cement_vol / 0.0347; // Volume of 1 bag
+
+    total_cost = (bags * cement_price) + (sand_vol * sand_price);
+
+    // 4. Output Results
+    printf("\n--- Plastering Estimate ---\n");
+    printf("Cement Required : %d bags\n", bags);
+    printf("Sand Required   : %.2f m3\n", sand_vol);
+    printf("TOTAL MATERIAL COST: %.2f\n", total_cost);
+    printf("---------------------------\n");
+
+    return 0;
+}
