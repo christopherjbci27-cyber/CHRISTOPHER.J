@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    float l, b, h, vol_m3, liters, gallons;
+
+    printf("Enter Tank Length, Breadth, Height (m): ");
+    scanf("%f %f %f", &l, &b, &h);
+
+    vol_m3 = l * b * h;
+    liters = vol_m3 * 1000;
+    gallons = liters * 0.264172;
+
+    printf("\nVolume: %.2f m3", vol_m3);
+    printf("\nCapacity: %.0f Liters", liters);
+    printf("\nCapacity: %.2f US Gallons\n", gallons);
+
+    return 0;
+}
