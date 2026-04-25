@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float total_width, req_area, bar_dia, bar_area, spacing;
+    int num_bars;
+
+    printf("--- Slab Reinforcement Calculator ---\n");
+
+    // 1. Input Design Requirements
+    printf("Enter Total Width of Slab (mm): ");
+    scanf("%f", &total_width);
+    
+    printf("Enter Required Area of Steel (mm2) from design: ");
+    scanf("%f", &req_area);
+    
+    printf("Enter Diameter of Bar to be used (mm): ");
+    scanf("%f", &bar_dia);
+
+    /* 
+       2. Calculations
+       Area of one bar = (PI * D^2) / 4
+       Number of bars = Total Area / Area of one bar
+       Spacing = Total Width / (Number of bars - 1)
+    */
+    bar_area = (3.14159 * bar_dia * bar_dia) / 4.0;
+    num_bars = ceil(req_area / bar_area);
+    spacing = total_width / num_bars;
+
+    // 3. Output Results
+    printf("\n--- Reinforcement Detail ---\n");
+    printf("Area of a single %0.fmm bar: %.2f mm2\n", bar_dia, bar_area);
+    printf("Minimum Number of Bars: %d\n", num_bars);
+    printf("Calculated Spacing     : %.1f mm c/c\n", spacing);
+    
+    // 4. Practical Suggestion
+    printf("Suggested Site Spacing : %.0f mm c/c\n", floor(spacing / 10.0) * 10.0);
+    printf("----------------------------\n");
+
+    return 0;
+}
