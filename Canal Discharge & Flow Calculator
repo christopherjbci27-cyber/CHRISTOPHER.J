@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float width, depth, slope, roughness, area, perimeter, radius, velocity, discharge;
+
+    // 1. Input Canal Geometry
+    printf("Enter Canal Bed Width (m): ");
+    scanf("%f", &width);
+    printf("Enter Depth of Water Flow (m): ");
+    scanf("%f", &depth);
+
+    // 2. Input Hydraulic Properties
+    printf("Enter Manning's Roughness (n) [e.g., 0.013 for Concrete]: ");
+    scanf("%f", &roughness);
+    printf("Enter Bed Slope (S) [e.g., 0.001]: ");
+    scanf("%f", &slope);
+
+    // 3. Hydraulic Calculations
+    area = width * depth;                   // Cross-sectional Area
+    perimeter = width + (2 * depth);        // Wetted Perimeter
+    radius = area / perimeter;              // Hydraulic Radius (R)
+
+    /* 
+       4. Manning's Formula for Velocity:
+       V = (1/n) * R^(2/3) * S^(1/2)
+    */
+    velocity = (1 / roughness) * pow(radius, (2.0 / 3.0)) * sqrt(slope);
+    
+    // 5. Discharge Calculation (Q = A * V)
+    discharge = area * velocity;
+
+    // 6. Output Results
+    printf("\n--- Hydraulic Analysis ---\n");
+    printf("Wetted Area      : %.3f m2\n", area);
+    printf("Hydraulic Radius : %.3f m\n", radius);
+    printf("Flow Velocity    : %.3f m/s\n", velocity);
+    printf("TOTAL DISCHARGE  : %.3f m3/s (Cumecs)\n", discharge);
+    printf("--------------------------\n");
+
+    return 0;
+}
