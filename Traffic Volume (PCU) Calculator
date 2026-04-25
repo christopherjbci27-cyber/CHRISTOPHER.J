@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int car, bike, truck, bus, cycle;
+    float total_pcu;
+
+    printf("--- Traffic Volume Study (PCU) ---\n");
+
+    // 1. Input vehicle counts from a 1-hour survey
+    printf("Enter number of Passenger Cars: ");
+    scanf("%d", &car);
+    printf("Enter number of Two-Wheelers: ");
+    scanf("%d", &bike);
+    printf("Enter number of Trucks: ");
+    scanf("%d", &truck);
+    printf("Enter number of Buses: ");
+    scanf("%d", &bus);
+    printf("Enter number of Bicycles: ");
+    scanf("%d", &cycle);
+
+    /* 
+       2. PCU Conversion Factors (Standard IRC Values):
+       Car = 1.0, Bike = 0.5, Truck/Bus = 3.0, Cycle = 0.2
+    */
+    total_pcu = (car * 1.0) + (bike * 0.5) + (truck * 3.0) + (bus * 3.0) + (cycle * 0.2);
+
+    // 3. Output Results
+    printf("\n--- Survey Results ---\n");
+    printf("Total Vehicles observed: %d\n", car + bike + truck + bus + cycle);
+    printf("Total Traffic Volume   : %.1f PCU/hour\n", total_pcu);
+
+    // 4. Capacity Analysis
+    if (total_pcu > 1500) {
+        printf("Status: ROAD CONGESTED (Widening Recommended)\n");
+    } else {
+        printf("Status: STABLE FLOW\n");
+    }
+    printf("----------------------\n");
+
+    return 0;
+}
