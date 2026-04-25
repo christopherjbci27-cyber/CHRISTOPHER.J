@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    float l, w, d, volume, rate, total_cost;
+
+    // 1. Get foundation dimensions
+    printf("Enter Foundation Length (m): ");
+    scanf("%f", &l);
+    printf("Enter Foundation Width (m): ");
+    scanf("%f", &w);
+    printf("Enter Excavation Depth (m): ");
+    scanf("%f", &d);
+
+    // 2. Get labor rate per cubic meter
+    printf("Enter Labor Rate per m3 (e.g., 150): ");
+    scanf("%f", &rate);
+
+    // 3. Calculate Volume and Cost
+    volume = l * w * d;
+    total_cost = volume * rate;
+
+    // 4. Output results
+    printf("\n--- Excavation Summary ---\n");
+    printf("Total Earthwork Volume : %.2f m3\n", volume);
+    printf("Unit Rate              : %.2f per m3\n", rate);
+    printf("ESTIMATED TOTAL COST   : %.2f\n", total_cost);
+    printf("--------------------------\n");
+
+    return 0;
+}
