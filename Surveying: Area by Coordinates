@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main() {
+    int n, i;
+    double x[20], y[20], area = 0.0;
+    printf("--- Land Area Calculator (Coordinate Method) ---\n");
+    printf("Enter the number of vertices: ");
+    scanf("%d", &n);
+    for(i = 0; i < n; i++) {
+        printf("Enter coordinates for Point %d (x y): ", i + 1);
+        scanf("%lf %lf", &x[i], &y[i]);
+    }
+    for(i = 0; i < n - 1; i++) {
+        area += (x[i] * y[i+1]) - (x[i+1] * y[i]);
+    }
+    area += (x[n-1] * y[0]) - (x[0] * y[n-1]);
+    if (area < 0) area = -area; // Absolute value
+    printf("\nTotal Area of the Plot: %.3f square units\n", 0.5 * area);
+    return 0;
+}
