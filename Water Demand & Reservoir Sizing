@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    long population;
+    float lpcd, fire_demand, total_daily_demand, reservoir_capacity;
+
+    printf("--- Water Demand Estimation Tool ---\n");
+
+    // 1. Input Population and Usage
+    printf("Enter Total Population: ");
+    scanf("%ld", &population);
+    
+    printf("Enter Water Consumption (liters per capita per day) [Std = 135]: ");
+    scanf("%f", &lpcd);
+
+    /* 
+       2. Calculations
+       Domestic Demand = Population * LPCD
+       Fire Demand (Kuchling's Formula) = 3182 * sqrt(Population/1000)
+    */
+    float domestic_demand = population * lpcd;
+    fire_demand = 3182 * (float)sqrt(population / 1000.0);
+    
+    total_daily_demand = domestic_demand + fire_demand;
+    
+    // Reservoir usually holds 33% of daily demand for emergencies
+    reservoir_capacity = total_daily_demand * 0.33;
+
+    // 3. Output Results
+    printf("\n--- Demand Forecast ---\n");
+    printf("Domestic Water Demand : %.2f Liters/Day\n", domestic_demand);
+    printf("Fire Fighting Demand  : %.2f Liters/Day\n", fire_demand);
+    printf("Total Daily Demand    : %.2f Liters/Day\n", total_daily_demand);
+    printf("Recommended Reservoir : %.2f Liters\n", reservoir_capacity);
+    printf("-----------------------\n");
+
+    return 0;
+}
