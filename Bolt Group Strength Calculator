@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float bolt_dia, plate_t, fy_bolt, fu_bolt;
+    int num_bolts, num_interfaces;
+    float v_nsb, v_dsb, gamma_mb = 1.25;
+
+    printf("--- Bolt Group Strength Analysis ---\n");
+
+    // 1. Input Bolt and Connection Details
+    printf("Enter Bolt Diameter (mm): ");
+    scanf("%f", &bolt_dia);
+    printf("Enter Ultimate Tensile Strength of Bolt (fu) in MPa: ");
+    scanf("%f", &fu_bolt);
+    printf("Number of shear planes (1 for Lap Joint, 2 for Butt Joint): ");
+    scanf("%d", &num_interfaces);
+    printf("Total number of bolts in the connection: ");
+    scanf("%d", &num_bolts);
+
+    /* 
+       2. Calculations (IS 800:2007 logic)
+       Net Area of Bolt (Anb) ≈ 0.78 * Cross-sectional Area
+       Nominal Shear Capacity = (fu / sqrt(3)) * (nn * Anb)
+       Design Strength = Nominal / Gamma_mb
+    */
+    float area_bolt = (3.14159 * bolt_dia * bolt_dia) / 4.0;
+    float area_net = 0.78 * area_bolt;
+    
+    // Nominal strength of a single bolt in Newtons
+    v_nsb = (fu_bolt / sqrt(3)) * (num_interfaces * area_net);
+    
+    // Design strength for the whole group in kN
+    v_dsb = (v_nsb / gamma_mb) * num_bolts / 1000.0;
+
+    // 3. Output Results
+    printf("\n--- Results ---\n");
+    printf("Net Area per Bolt       : %.2f mm2\n", area_net);
+    printf("Strength per Bolt (Vdb) : %.2f kN\n", (v_nsb / gamma_mb) / 1000.0);
+    printf("TOTAL GROUP STRENGTH    : %.2f kN\n", v_dsb);
+    printf("-------------------------------\n");
+
+    return 0;
+}
