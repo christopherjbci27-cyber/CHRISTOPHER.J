@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    float volume_viods, volume_solids, e, n;
+
+    printf("Enter Volume of Voids (Vv): ");
+    scanf("%f", &volume_viods);
+    printf("Enter Volume of Solids (Vs): ");
+    scanf("%f", &volume_solids);
+
+    e = volume_viods / volume_solids; // Void Ratio
+    n = e / (1 + e);                 // Porosity
+
+    printf("\nVoid Ratio (e): %.3f", e);
+    printf("\nPorosity (n): %.3f (%.2f%%)\n", n, n * 100);
+
+    return 0;
+}
