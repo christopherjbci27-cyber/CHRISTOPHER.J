@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+    double n, R, S, V;
+    printf("--- Open Channel Flow (Manning's) ---\n");
+    printf("Enter Manning's Roughness Coefficient (n): ");
+    scanf("%lf", &n);
+    printf("Enter Hydraulic Radius (m): ");
+    scanf("%lf", &R);
+    printf("Enter Slope of Energy Grade Line (S): ");
+    scanf("%lf", &S);
+    V = (1.0 / n) * pow(R, 2.0/3.0) * sqrt(S);
+    printf("\nCalculated Flow Velocity: %.4f m/s\n", V);
+    return 0;
+}
