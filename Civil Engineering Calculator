@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+float calculateConcreteVolume(float length, float width, float depth) {
+    return length * width * depth;
+}
+double calculateDeflection(double load, double length, double E, double I) {
+    return (load * pow(length, 3)) / (48 * E * I);
+}
+int main() {
+    int choice;
+    float l, w, d, volume;
+    double load, length, E, I, deflection;
+    printf("--- Civil Engineering Calculator ---\n");
+    printf("1. Concrete Volume\n");
+    printf("2. Beam Deflection (Center Load)\n");
+    printf("Enter choice: ");
+    scanf("%d", &choice);
+    switch(choice) {
+        case 1:
+            printf("Enter Length, Width, Depth (m): ");
+            scanf("%f %f %f", &l, &w, &d);
+            volume = calculateConcreteVolume(l, w, d);
+            printf("Total Concrete Volume: %.3f m^3\n", volume);
+            break;
+        case 2:
+            printf("Enter Load (N), Length (m), Modulus (E), Moment of Inertia (I): ");
+            scanf("%lf %lf %lf %lf", &load, &length, &E, &I);
+            deflection = calculateDeflection(load, length, E, I);
+            printf("Beam Deflection: %.5lf m\n", deflection);
+            break;
+        default:
+            printf("Invalid choice.\n");
+    }
+    return 0;
+}
