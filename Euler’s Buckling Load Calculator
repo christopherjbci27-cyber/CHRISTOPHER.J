@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float E, I, L, Le, P_crit, P_safe;
+    float fos = 2.5;
+    int end_condition;
+
+    printf("--- Euler's Buckling Analysis ---\n");
+
+    // 1. Input Material and Section Properties
+    printf("Enter Modulus of Elasticity (E) in GPa: ");
+    scanf("%f", &E);
+    printf("Enter Moment of Inertia (I) in mm4: ");
+    scanf("%f", &I);
+    printf("Enter Actual Length of Column (L) in meters: ");
+    scanf("%f", &L);
+
+    // 2. Select End Conditions to determine Effective Length
+    printf("\nEnd Conditions:\n1. Both ends hinged\n2. Both ends fixed\n3. One fixed, one hinged\n4. One fixed, one free\nSelect (1-4): ");
+    scanf("%d", &end_condition);
+
+    switch(end_condition) {
+        case 1: Le = L; break;           // L_eff = L
+        case 2: Le = L / 2.0; break;     // L_eff = 0.5L
+        case 3: Le = L / sqrt(2); break; // L_eff = 0.707L
+        case 4: Le = 2 * L; break;       // L_eff = 2L
+        default: Le = L;
+    }
+
+    /* 
+       3. Euler's Formula:
+       P_crit = (pi^2 * E * I) / (Le^2)
+       Note: Converting E from GPa to N/mm2 (multiply by 1000)
+    */
+    float E_newton = E * 1000.0;
+    float L_mm = Le * 1000.0;
+    P_crit = (M_PI * M_PI * E_newton * I) / (L_mm * L_mm);
+    P_safe = P_crit / fos;
+
+    // 4. Output Results
+    printf("\n--- Resulting Loads ---\n");
+    printf("Effective Length (Le): %.3f m\n", Le);
+    printf("Critical Buckling Load: %.2f kN\n", P_crit / 1000.0);
+    printf("Safe Working Load: %.2f kN\n", P_safe / 1000.0);
+    printf("-----------------------\n");
+
+    return 0;
+}
