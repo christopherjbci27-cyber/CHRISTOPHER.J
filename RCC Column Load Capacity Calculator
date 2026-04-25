@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main() {
+    float width, depth, fck, fy, area_steel, area_concrete, load;
+
+    // 1. Input Column Details
+    printf("Enter Column Width (mm): ");
+    scanf("%f", &width);
+    printf("Enter Column Depth (mm): ");
+    scanf("%f", &depth);
+
+    // 2. Input Material Strengths
+    printf("Enter Grade of Concrete (fck, e.g., 20 or 25): ");
+    scanf("%f", &fck);
+    printf("Enter Grade of Steel (fy, e.g., 415 or 500): ");
+    scanf("%f", &fy);
+
+    // 3. Assume 1% Steel Reinforcement (Standard Practice)
+    float gross_area = width * depth;
+    area_steel = 0.01 * gross_area;
+    area_concrete = gross_area - area_steel;
+
+    /* 
+       4. Ultimate Load Formula (IS 456:2000):
+       Pu = 0.4 * fck * Ac + 0.67 * fy * Asc
+    */
+    load = (0.4 * fck * area_concrete) + (0.67 * fy * area_steel);
+
+    // 5. Convert Newtons to KiloNewtons (kN)
+    float load_kn = load / 1000;
+
+    printf("\n--- Structural Report ---\n");
+    printf("Gross Area       : %.2f mm2\n", gross_area);
+    printf("Steel Area (1%%)  : %.2f mm2\n", area_steel);
+    printf("Ultimate Load (Pu): %.2f kN\n", load_kn);
+    printf("Safe Working Load : %.2f kN (F.O.S = 1.5)\n", load_kn / 1.5);
+    printf("-------------------------\n");
+
+    return 0;
+}
