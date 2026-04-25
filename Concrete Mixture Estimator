@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main() {
+    float total_volume, ratio_c, ratio_s, ratio_a;
+    float dry_volume, cement, sand, aggregate;
+    printf("--- Concrete Mixture Calculator ---\n");
+    printf("Enter total wet volume (m^3): ");
+    scanf("%f", &total_volume);
+    printf("Enter mix ratio (Cement : Sand : Aggregate) e.g., 1 2 4: ");
+    scanf("%f %f %f", &ratio_c, &ratio_s, &ratio_a);
+    dry_volume = total_volume * 1.54;
+    float total_parts = ratio_c + ratio_s + ratio_a;
+    cement = (dry_volume / total_parts) * ratio_c;
+    sand = (dry_volume / total_parts) * ratio_s;
+    aggregate = (dry_volume / total_parts) * ratio_a;
+    printf("Cement: %.2f m^3 (approx %.2f bags)\n", cement, cement * 30); // 1m3 ~ 30 bags
+    printf("Sand: %.2f m^3\n", sand);
+    printf("Aggregate: %.2f m^3\n", aggregate);
+    return 0;
+}
