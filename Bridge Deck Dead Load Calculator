@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    float slab_t, wear_t, railings_load;
+    float conc_density = 25.0; // kN/m3 for Reinforced Concrete
+    float asphalt_density = 22.0; // kN/m3 for Asphalt
+
+    printf("--- Bridge Deck Load Analysis ---\n");
+
+    // 1. Input Section Thicknesses
+    printf("Enter Concrete Slab Thickness (mm): ");
+    scanf("%f", &slab_t);
+    printf("Enter Asphalt Wearing Coat Thickness (mm): ");
+    scanf("%f", &wear_t);
+    printf("Enter Miscellaneous Loads (Railings/Kerbs) in kN/m: ");
+    scanf("%f", &railings_load);
+
+    /* 
+       2. Calculations (Load = Thickness * Density)
+       Convert mm to meters (mm / 1000)
+    */
+    float slab_load = (slab_t / 1000.0) * conc_density;
+    float asphalt_load = (wear_t / 1000.0) * asphalt_density;
+    float total_dead_load = slab_load + asphalt_load;
+
+    // 3. Output Results
+    printf("\n--- Load Breakdown (per m2) ---\n");
+    printf("Slab Self-Weight     : %.2f kN/m2\n", slab_load);
+    printf("Wearing Coat Weight  : %.2f kN/m2\n", asphalt_load);
+    printf("-------------------------------\n");
+    printf("TOTAL DEAD LOAD      : %.2f kN/m2\n", total_daily_demand);
+    printf("Factored Load (1.35) : %.2f kN/m2\n", total_dead_load * 1.35);
+    printf("-------------------------------\n");
+
+    return 0;
+}
