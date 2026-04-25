@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    float h, t, unit_weight_soil, unit_weight_conc, ka;
+    float vertical_load, overturning_moment, restoring_moment, fos;
+
+    printf("--- Retaining Wall Stability Analysis ---\n");
+
+    // 1. Input Wall and Soil Properties
+    printf("Enter Wall Height (m): ");
+    scanf("%f", &h);
+    printf("Enter Wall Thickness/Base Width (m): ");
+    scanf("%f", &t);
+    printf("Enter Soil Unit Weight (kN/m3): ");
+    scanf("%f", &unit_weight_soil);
+    printf("Enter Concrete Unit Weight (kN/m3) [Std = 24]: ");
+    scanf("%f", &unit_weight_conc);
+    printf("Enter Coefficient of Active Pressure (Ka): ");
+    scanf("%f", &ka);
+
+    /* 
+       2. Calculations (per meter length of wall)
+       Active Earth Pressure (Pa) = 0.5 * Ka * gamma * h^2
+       Overturning Moment (Mo) = Pa * (h / 3)
+       Restoring Moment (Mr) = (Weight of Wall) * (t / 2)
+    */
+    float earth_pressure = 0.5 * ka * unit_weight_soil * h * h;
+    overturning_moment = earth_pressure * (h / 3.0);
+    
+    vertical_load = h * t * unit_weight_conc;
+    restoring_moment = vertical_load * (t / 2.0);
+    
+    fos = restoring_moment / overturning_moment;
+
+    // 3. Output Results
+    printf("\n--- Stability Report ---\n");
+    printf("Active Earth Pressure : %.2f kN/m\n", earth_pressure);
+    printf("Overturning Moment    : %.2f kNm\n", overturning_moment);
+    printf("Restoring Moment      : %.2f kNm\n", restoring_moment);
+    printf("FACTOR OF SAFETY      : %.2f\n", fos);
+
+    // 4. Engineering Verdict
+    if (fos >= 1.5) {
+        printf("Status: SAFE against overturning.\n");
+    } else {
+        printf("Status: UNSAFE (Increase base width!)\n");
+    }
+    printf("------------------------\n");
+
+    return 0;
+}
