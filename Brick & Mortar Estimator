@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    float wall_l, wall_h, wall_t, wall_vol;
+    float brick_l = 0.19, brick_w = 0.09, brick_h = 0.09; // Standard brick in meters
+    float vol_with_mortar, num_bricks;
+
+    printf("Enter Wall Length, Height, and Thickness (m): ");
+    scanf("%f %f %f", &wall_l, &wall_h, &wall_t);
+
+    wall_vol = wall_l * wall_h * wall_t;
+    // Volume of one brick with 10mm mortar
+    vol_with_mortar = (brick_l + 0.01) * (brick_w + 0.01) * (brick_h + 0.01);
+    num_bricks = wall_vol / vol_with_mortar;
+
+    printf("\nTotal Wall Volume: %.2f m3", wall_vol);
+    printf("\nEstimated Bricks Needed: %.0f", num_bricks);
+    
+    return 0;
+}
