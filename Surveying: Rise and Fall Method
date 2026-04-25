@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float bs, fs, rise, fall, rl;
+
+    printf("--- Rise and Fall Levelling Tool ---\n");
+
+    // 1. Initial Setup
+    printf("Enter the starting Reduced Level (RL) of Bench Mark: ");
+    scanf("%f", &rl);
+    
+    printf("How many points do you want to calculate?: ");
+    scanf("%d", &n);
+
+    float current_rl = rl;
+    float prev_reading;
+
+    printf("Enter initial Backsight (BS) reading: ");
+    scanf("%f", &prev_reading);
+
+    printf("\n%-10s %-10s %-10s %-10s %-10s\n", "Point", "Reading", "Rise", "Fall", "RL");
+    printf("------------------------------------------------------------\n");
+    printf("%-10d %-10.3f %-10s %-10s %-10.3f\n", 1, prev_reading, "-", "-", current_rl);
+
+    // 2. Loop for subsequent points
+    for(i = 2; i <= n; i++) {
+        float current_reading;
+        printf("\nEnter reading for Point %d: ", i);
+        scanf("%f", &current_reading);
+
+        float diff = prev_reading - current_reading;
+
+        if (diff > 0) {
+            rise = diff;
+            fall = 0;
+            current_rl += rise;
+            printf("%-10d %-10.3f %-10.3f %-10s %-10.3f\n", i, current_reading, rise, "-", current_rl);
+        } else {
+            fall = -diff;
+            rise = 0;
+            current_rl -= fall;
+            printf("%-10d %-10.3f %-10s %-10.3f %-10.3f\n", i, current_reading, "-", fall, current_rl);
+        }
+        
+        prev_reading = current_reading;
+    }
+
+    printf("------------------------------------------------------------\n");
+    return 0;
+}
