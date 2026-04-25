@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+    double C, es, ea, V, E;
+    printf("--- Reservoir Evaporation (Meyer's Equation) ---\n");
+    printf("Enter Lake Coefficient (e.g., 11 for deep, 15 for shallow): ");
+    scanf("%lf", &C);
+    printf("Enter Saturation Vapour Pressure (es) in mm of Hg: ");
+    scanf("%lf", &es);
+    printf("Enter Actual Vapour Pressure (ea) in mm of Hg: ");
+    scanf("%lf", &ea);
+    printf("Enter Wind Velocity at 9m height (km/ph): ");
+    scanf("%lf", &V);
+    E = C * (es - ea) * (1 + (V / 16.0));
+    printf("\nMonthly Evaporation Loss: %.2f mm\n", E);
+    return 0;
+}
