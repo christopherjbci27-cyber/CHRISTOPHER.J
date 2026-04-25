@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main() {
+    double volume, totalParts = 5.5; // 1 + 1.5 + 3
+    double dryVolume;
+    printf("--- M20 Concrete Mix Estimator ---\n");
+    printf("Enter volume of wet concrete needed (m3): ");
+    scanf("%lf", &volume);
+    dryVolume = volume * 1.54;
+    double cement = (1 / totalParts) * dryVolume;
+    double sand = (1.5 / totalParts) * dryVolume;
+    double aggregate = (3 / totalParts) * dryVolume;
+    printf("\nRequired Materials:\n");
+    printf("- Cement: %.2f m3 (~%.0f bags)\n", cement, cement / 0.035);
+    printf("- Sand: %.2f m3\n", sand);
+    printf("- Aggregate: %.2f m3\n", aggregate);
+    return 0;
+}
