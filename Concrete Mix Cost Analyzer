@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main() {
+    float vol_wet, vol_dry, ratio_sum;
+    float p_cement, p_sand, p_agg;
+    float qty_c, qty_s, qty_a;
+    float cost_c, cost_s, cost_a, total_cost;
+
+    printf("--- Concrete Mix Cost Analysis ---\n");
+
+    // 1. Input Mix and Prices
+    printf("Enter volume of concrete needed (m3): ");
+    scanf("%f", &vol_wet);
+    
+    printf("Enter Price of Cement (per 50kg bag): ");
+    scanf("%f", &p_cement);
+    printf("Enter Price of Sand (per m3): ");
+    scanf("%f", &p_sand);
+    printf("Enter Price of Aggregate (per m3): ");
+    scanf("%f", &p_agg);
+
+    /* 
+       2. Material Quantities (for M20 Mix 1:1.5:3)
+       Dry Volume = Wet Volume * 1.54
+    */
+    vol_dry = vol_wet * 1.54;
+    ratio_sum = 1 + 1.5 + 3; // 5.5
+
+    qty_c = (1.0 / ratio_sum) * vol_dry; // in m3
+    qty_s = (1.5 / ratio_sum) * vol_dry; // in m3
+    qty_a = (3.0 / ratio_sum) * vol_dry; // in m3
+
+    // 3. Convert Cement to bags and Calculate Costs
+    int bags = (int)(qty_c / 0.0347 + 0.99); // Rounding up bags
+    cost_c = bags * p_cement;
+    cost_s = qty_s * p_sand;
+    cost_a = qty_a * p_agg;
+    total_cost = cost_c + cost_s + cost_a;
+
+    // 4. Output Results
+    printf("\n--- Material Breakdown ---\n");
+    printf("Cement Required : %d bags      | Cost: %.2f\n", bags, cost_c);
+    printf("Sand Required   : %.2f m3      | Cost: %.2f\n", qty_s, cost_s);
+    printf("Aggregate Req.  : %.2f m3      | Cost: %.2f\n", qty_a, cost_a);
+    printf("------------------------------------------\n");
+    printf("TOTAL ESTIMATED COST: %.2f\n", total_cost);
+    printf("COST PER CUBIC METER: %.2f\n", total_cost / vol_wet);
+    
+    return 0;
+}
