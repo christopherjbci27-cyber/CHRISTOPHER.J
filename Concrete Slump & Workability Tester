@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    float mold_height = 300.0; // Standard cone height in mm
+    float observed_height, slump_value;
+
+    printf("--- Concrete Slump Test Analysis ---\n");
+
+    // 1. Input the measured height of the concrete after removing the cone
+    printf("Enter the height of the slumped concrete (mm): ");
+    scanf("%f", &observed_height);
+
+    /* 
+       2. Calculation
+       Slump = Original Mold Height - Height of Concrete after Slumping
+    */
+    slump_value = mold_height - observed_height;
+
+    // 3. Output Results
+    printf("\n--- Test Report ---\n");
+    printf("Calculated Slump: %.1f mm\n", slump_value);
+
+    // 4. Engineering Classification (Standard Ranges)
+    if (slump_value < 0 || slump_value > 300) {
+        printf("Error: Invalid measurement.\n");
+    } else if (slump_value <= 25) {
+        printf("Workability: VERY LOW (Used for road kerbs/rollers)\n");
+    } else if (slump_value <= 50) {
+        printf("Workability: LOW (Used for foundations/mass concrete)\n");
+    } else if (slump_value <= 100) {
+        printf("Workability: MEDIUM (Used for beams/slabs/columns)\n");
+    } else {
+        printf("Workability: HIGH (Used for congested reinforcement/pumping)\n");
+    }
+    printf("-------------------\n");
+
+    return 0;
+}
