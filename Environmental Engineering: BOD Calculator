@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    float do_initial, do_final, dilution_factor, bod;
+    float sample_volume, total_volume;
+
+    printf("--- Wastewater BOD Analysis ---\n");
+
+    // 1. Input Dissolved Oxygen (DO) values
+    printf("Enter Initial Dissolved Oxygen (mg/L): ");
+    scanf("%f", &do_initial);
+    printf("Enter Final DO (after 5 days incubation): ");
+    scanf("%f", &do_final);
+
+    // 2. Input Dilution details
+    printf("Enter Volume of Wastewater Sample (ml): ");
+    scanf("%f", &sample_volume);
+    printf("Enter Total Volume of Dilution Bottle (ml): ");
+    scanf("%f", &total_volume);
+
+    /* 
+       3. Calculations
+       Dilution Factor (P) = Total Volume / Sample Volume
+       BOD = (DO_initial - DO_final) * Dilution Factor
+    */
+    dilution_factor = total_volume / sample_volume;
+    bod = (do_initial - do_final) * dilution_factor;
+
+    // 4. Output Results
+    printf("\n--- Test Report ---\n");
+    printf("Dilution Factor: %.2f\n", dilution_factor);
+    printf("BOD of Sample  : %.2f mg/L\n", bod);
+
+    // 5. Water Quality Classification
+    if (bod < 5) printf("Quality: Very Clean (Natural Stream)\n");
+    else if (bod <= 20) printf("Quality: Moderately Polluted\n");
+    else if (bod <= 100) printf("Quality: Poor (Treated Sewage)\n");
+    else printf("Quality: Very Poor (Raw Sewage)\n");
+    
+    printf("-------------------\n");
+
+    return 0;
+}
