@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float total_height, radius, inner_radius, riser_target;
+    int num_risers;
+    float actual_riser, tread_angle, outer_tread_width;
+
+    printf("--- Spiral Staircase Geometry Tool ---\n");
+
+    // 1. Input Space Constraints
+    printf("Enter Floor-to-Floor Height (mm): ");
+    scanf("%f", &total_height);
+    printf("Enter Outer Radius of Stairs (mm): ");
+    scanf("%f", &radius);
+    printf("Enter Center Post Radius (mm): ");
+    scanf("%f", &inner_radius);
+    printf("Enter Target Riser Height (mm) [Std = 150-180]: ");
+    scanf("%f", &riser_target);
+
+    /* 
+       2. Calculations
+       Number of Risers = Total Height / Target Riser
+       Actual Riser = Total Height / Integer Number of Risers
+       Assuming a 270-degree rotation for a standard spiral
+    */
+    num_risers = (int)(total_height / riser_target + 0.5);
+    actual_riser = total_height / num_risers;
+    
+    // Each step angle (assuming 270 degrees total travel)
+    tread_angle = 270.0 / (num_risers - 1); 
+    
+    // Outer Tread Width = (Angle in Radians) * Radius
+    outer_tread_width = (tread_angle * (M_PI / 180.0)) * radius;
+
+    // 3. Output Results
+    printf("\n--- Architectural Specs ---\n");
+    printf("Total Number of Steps : %d\n", num_risers - 1);
+    printf("Actual Riser Height   : %.2f mm\n", actual_riser);
+    printf("Angle per Tread       : %.2f degrees\n", tread_angle);
+    printf("Outer Tread Width     : %.2f mm\n", outer_tread_width);
+
+    // 4. Safety Check
+    if (actual_riser > 190) {
+        printf("Warning: Risers are too steep for comfort!\n");
+    }
+    if (outer_tread_width < 250) {
+        printf("Warning: Treads are too narrow at the edge!\n");
+    }
+    printf("---------------------------\n");
+
+    return 0;
+}
