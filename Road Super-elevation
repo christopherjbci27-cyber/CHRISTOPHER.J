@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    float velocity, radius, e;
+
+    printf("Enter Design Speed (km/hr): ");
+    scanf("%f", &velocity);
+    printf("Enter Radius of Curve (m): ");
+    scanf("%f", &radius);
+
+    // Formula: e = V^2 / (225 * R) for mixed traffic
+    e = (velocity * velocity) / (225 * radius);
+
+    printf("Required Super-elevation (e): %.4f\n", e);
+    printf("In percentage: %.2f%%\n", e * 100);
+
+    return 0;
+}
