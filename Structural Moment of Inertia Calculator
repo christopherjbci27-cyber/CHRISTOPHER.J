@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float b, d, i_xx, i_yy;
+
+    printf("Enter Breadth of the beam (mm): ");
+    scanf("%f", &b);
+    printf("Enter Depth of the beam (mm): ");
+    scanf("%f", &d);
+
+    // Formula: I = (b * d^3) / 12
+    i_xx = (b * pow(d, 3)) / 12;
+    i_yy = (d * pow(b, 3)) / 12;
+
+    printf("\n--- Section Properties ---\n");
+    printf("Ixx (Major Axis): %.2f mm4\n", i_xx);
+    printf("Iyy (Minor Axis): %.2f mm4\n", i_yy);
+    printf("--------------------------\n");
+
+    return 0;
+}
