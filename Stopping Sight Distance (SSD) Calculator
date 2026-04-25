@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float v_kmph, v_ms, t, f, ssd, lag_dist, braking_dist;
+
+    // 1. Input Design Speed and reaction time
+    printf("Enter Design Speed of Road (km/hr): ");
+    scanf("%f", &v_kmph);
+    
+    printf("Enter Driver Reaction Time (sec) [Standard = 2.5]: ");
+    scanf("%f", &t);
+
+    printf("Enter Coefficient of Friction [Standard = 0.35]: ");
+    scanf("%f", &f);
+
+    // 2. Convert speed from km/hr to m/s
+    v_ms = v_kmph * 0.278;
+
+    /* 
+       3. SSD Formula:
+       SSD = Lag Distance + Braking Distance
+       SSD = (v * t) + (v^2 / (2 * g * f))
+    */
+    lag_dist = v_ms * t;
+    braking_dist = (v_ms * v_ms) / (2 * 9.81 * f);
+    ssd = lag_dist + braking_dist;
+
+    // 4. Output results
+    printf("\n--- Road Safety Analysis ---\n");
+    printf("Speed in m/s       : %.2f m/s\n", v_ms);
+    printf("Lag Distance       : %.2f m\n", lag_dist);
+    printf("Braking Distance   : %.2f m\n", braking_dist);
+    printf("TOTAL SSD REQUIRED : %.2f meters\n", ssd);
+    printf("----------------------------\n");
+
+    return 0;
+}
