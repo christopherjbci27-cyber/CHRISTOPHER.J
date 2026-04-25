@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+int main() {
+    float mag_bearing, declination, true_bearing;
+    char direction[2];
+    printf("--- Surveying: True Bearing Calculator ---\n");
+    printf("Enter Magnetic Bearing (0-360 degrees): ");
+    scanf("%f", &mag_bearing);
+    printf("Enter Magnetic Declination (degrees): ");
+    scanf("%f", &declination);
+    printf("Is Declination East (E) or West (W)?: ");
+    scanf("%s", direction);
+    if (strcmp(direction, "E") == 0 || strcmp(direction, "e") == 0) {
+        true_bearing = mag_bearing + declination;
+    } 
+    else if (strcmp(direction, "W") == 0 || strcmp(direction, "w") == 0) {
+        true_bearing = mag_bearing - declination;
+    } 
+    else {
+        printf("Invalid direction entered.\n");
+        return 1;
+    }
+    if (true_bearing >= 360) true_bearing -= 360;
+    if (true_bearing < 0) true_bearing += 360;
+    printf("\n--- Calculation Summary ---\n");
+    printf("Magnetic Bearing: %.2f\n", mag_bearing);
+    printf("Declination:      %.2f %s\n", declination, direction);
+    printf(">> True Bearing:  %.2f degrees\n", true_bearing);
+    return 0;
+}
