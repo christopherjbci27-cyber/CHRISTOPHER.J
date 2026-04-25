@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    float w1, w2, w3, w4, g;
+
+    printf("--- Specific Gravity (Pycnometer Method) ---\n");
+
+    // 1. Input weights from the lab experiment
+    printf("Weight of empty Pycnometer (W1) in grams: ");
+    scanf("%f", &w1);
+
+    printf("Weight of Pycnometer + Dry Soil (W2) in grams: ");
+    scanf("%f", &w2);
+
+    printf("Weight of Pycnometer + Soil + Water (W3) in grams: ");
+    scanf("%f", &w3);
+
+    printf("Weight of Pycnometer + Water only (W4) in grams: ");
+    scanf("%f", &w4);
+
+    /* 
+       2. Specific Gravity Formula:
+       G = (W2 - W1) / ((W2 - W1) - (W3 - W4))
+    */
+    float weight_of_soil = w2 - w1;
+    float weight_of_water_displaced = (w4 - w1) - (w3 - w2);
+    
+    g = weight_of_soil / (weight_of_soil + (w4 - w3));
+
+    // 3. Output results
+    printf("\n--- Lab Report ---\n");
+    printf("Weight of Dry Soil     : %.2f g\n", weight_of_soil);
+    printf("SPECIFIC GRAVITY (G)   : %.3f\n", g);
+
+    // 4. Engineering Interpretation
+    if (g >= 2.65 && g <= 2.80) {
+        printf("Inference: Likely Inorganic Clay or Silt.\n");
+    } else if (g < 2.65) {
+        printf("Inference: Likely Organic Soil or Sand.\n");
+    } else {
+        printf("Inference: Likely soil with high iron content.\n");
+    }
+    printf("------------------\n");
+
+    return 0;
+}
