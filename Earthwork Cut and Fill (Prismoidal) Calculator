@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    float l, a1, a2, am, volume;
+
+    printf("--- Earthwork Volume Calculator ---\n");
+
+    // 1. Input Cross-Sectional Areas
+    printf("Enter Distance between sections (m): ");
+    scanf("%f", &l);
+    printf("Enter Area of first section (m2): ");
+    scanf("%f", &a1);
+    printf("Enter Area of last section (m2): ");
+    scanf("%f", &a2);
+    printf("Enter Area of mid-section (m2): ");
+    scanf("%f", &am);
+
+    /* 
+       2. Prismoidal Formula:
+       Volume = (L / 6) * (A1 + A2 + 4*Am)
+    */
+    volume = (l / 6.0) * (a1 + a2 + (4.0 * am));
+
+    // 3. Output Results
+    printf("\n--- Volume Report ---\n");
+    printf("Total Earthwork Volume: %.2f m3\n", volume);
+    
+    // 4. Practical Logistics
+    float trucks = volume / 10.0; // Assuming 10m3 per truck
+    printf("Estimated Truck Loads (10m3 each): %.0f\n", trucks);
+    printf("---------------------\n");
+
+    return 0;
+}
