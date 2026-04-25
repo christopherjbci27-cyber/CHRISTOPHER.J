@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float dia, slope, n, area, velocity, discharge;
+
+    printf("--- Sewer Pipe Flow Analysis ---\n");
+
+    // 1. Input Pipe details (assuming pipe is flowing half-full)
+    printf("Enter Pipe Diameter (mm): ");
+    scanf("%f", &dia);
+    printf("Enter Bed Slope (e.g., 0.01 for 1 in 100): ");
+    scanf("%f", &slope);
+    printf("Enter Manning's n (e.g., 0.013 for Concrete/PVC): ");
+    scanf("%f", &n);
+
+    /* 
+       2. Calculations for Half-Full Flow:
+       Radius (r) = dia / 2000 (to get meters)
+       Area (A) = (PI * r^2) / 2
+       Hydraulic Radius (R) = dia / 4000
+    */
+    float d_m = dia / 1000.0;
+    float r_h = d_m / 4.0; 
+    area = (3.14159 * (d_m * d_m)) / 8.0;
+
+    // Manning's Velocity V = (1/n) * R^(2/3) * S^(1/2)
+    velocity = (1.0 / n) * pow(r_h, (2.0 / 3.0)) * sqrt(slope);
+    discharge = area * velocity;
+
+    // 3. Output Results
+    printf("\n--- Result (Half-Full Flow) ---\n");
+    printf("Flow Velocity : %.3f m/s\n", velocity);
+    printf("Discharge (Q) : %.3f m3/s\n", discharge);
+
+    // 4. Engineering Check
+    if (velocity < 0.6) {
+        printf("Status: CRITICAL (Velocity too low, silting may occur!)\n");
+    } else {
+        printf("Status: SAFE (Self-cleansing velocity achieved)\n");
+    }
+    printf("-------------------------------\n");
+
+    return 0;
+}
