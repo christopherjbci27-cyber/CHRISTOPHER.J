@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    float width, thickness, bolt_dia, hole_dia;
+    int num_bolts;
+    float fy = 250.0; // Yield strength of steel in MPa (N/mm2)
+    float gamma_m0 = 1.1; // Partial safety factor
+    float net_area, design_strength;
+
+    printf("--- Steel Tension Member Analysis ---\n");
+
+    // 1. Input Member and Bolt details
+    printf("Enter Plate Width (mm): ");
+    scanf("%f", &width);
+    printf("Enter Plate Thickness (mm): ");
+    scanf("%f", &thickness);
+    printf("Enter Bolt Diameter (mm): ");
+    scanf("%f", &bolt_dia);
+    printf("Enter number of bolts in a single cross-section: ");
+    scanf("%d", &num_bolts);
+
+    /* 
+       2. Calculations
+       Hole Diameter = Bolt Diameter + 2mm (Standard clearance)
+       Net Area = (Total Width - (n * Hole Diameter)) * Thickness
+       Strength (Td) = (Ag * fy) / gamma_m0
+    */
+    hole_dia = bolt_dia + 2.0;
+    net_area = (width - (num_bolts * hole_dia)) * thickness;
+    
+    // Td = (An * fy) / 1.1
+    design_strength = (net_area * fy) / gamma_m0;
+
+    // 3. Output Results
+    printf("\n--- Section Properties ---\n");
+    printf("Hole Diameter used : %.1f mm\n", hole_dia);
+    printf("Net Sectional Area : %.2f mm2\n", net_area);
+    printf("Design Strength (Td): %.2f kN\n", design_strength / 1000.0);
+    printf("--------------------------\n");
+
+    return 0;
+}
