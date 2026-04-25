@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    float l, w, d, volume;
+    int bags;
+
+    printf("Enter Slab Length, Width, Depth (m): ");
+    scanf("%f %f %f", &l, &w, &d);
+
+    volume = l * w * d;
+    // Rough estimate: ~6.5 bags of cement per cubic meter for M15 grade
+    bags = volume * 6.5;
+
+    printf("Total Volume: %.3f m^3\n", volume);
+    printf("Estimated Cement Bags: %d\n", bags);
+
+    return 0;
+}
