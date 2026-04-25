@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    float total_work, hours_worked, num_workers, productivity;
+    float planned_productivity, variance;
+
+    printf("--- Labor Productivity Analysis ---\n");
+
+    // 1. Input Work Details
+    printf("Enter Total Work Completed (e.g., m2 of tiling): ");
+    scanf("%f", &total_work);
+    printf("Enter Number of Workers assigned: ");
+    scanf("%f", &num_workers);
+    printf("Enter Total Hours worked by the team: ");
+    scanf("%f", &hours_worked);
+
+    // 2. Input Benchmark
+    printf("Enter Planned Productivity (units per man-hour): ");
+    scanf("%f", &planned_productivity);
+
+    /* 
+       3. Calculations
+       Productivity = Output / (Workers * Hours)
+    */
+    productivity = total_work / (num_workers * hours_worked);
+    variance = ((productivity - planned_productivity) / planned_productivity) * 100;
+
+    // 4. Output Results
+    printf("\n--- Performance Report ---\n");
+    printf("Actual Productivity : %.2f units/man-hour\n", productivity);
+    printf("Efficiency Variance : %.2f%%\n", variance);
+
+    if (variance >= 0) {
+        printf("Status: ABOVE TARGET (Good Efficiency)\n");
+    } else {
+        printf("Status: BEHIND TARGET (Low Efficiency)\n");
+    }
+    printf("---------------------------\n");
+
+    return 0;
+}
