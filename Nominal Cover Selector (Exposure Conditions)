@@ -1,0 +1,4 @@
+def get_cover(exposure):
+    covers = {"mild": 20, "moderate": 30, "severe": 45, "extreme": 75}
+    return f"{covers.get(exposure, 20)} mm"
+print("Clear cover requirement:", get_cover("severe"))
