@@ -1,0 +1,3 @@
+def development_length(dia, sigma_s, tau_bd):
+    return (dia * sigma_s) / (4 * tau_bd)
+print(f"Ld required: {development_length(16, 230, 1.4):.2f} mm")
