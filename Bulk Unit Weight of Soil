@@ -1,0 +1,4 @@
+def bulk_unit_weight(mass_g, volume_cc):
+    # Returns density in g/cm3; multiply by 9.81 for kN/m3
+    return (mass_g / volume_cc) * 9.81
+print(f"Bulk Unit Weight: {bulk_unit_weight(180, 100):.2f} kN/m³")
