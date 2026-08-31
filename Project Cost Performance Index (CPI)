@@ -1,0 +1,4 @@
+def earn_value_performance(ev, ac):
+    cpi = ev / ac
+    return cpi, "On Budget" if cpi >= 1.0 else "Over Budget"
+print("Budget performance:", earn_value_performance(45000, 48000))
