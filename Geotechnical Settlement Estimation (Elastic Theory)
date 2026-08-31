@@ -1,0 +1,34 @@
+def immediate_settlement(pressure, width, poisson_ratio, elastic_modulus, influence_factor):
+    """
+    Calculates immediate foundation settlement.
+    pressure: Applied load intensity (kPa or kN/m^2)
+    width: Width of footing (m)
+    poisson_ratio: Soil Poisson's ratio (μ)
+    elastic_modulus: Modulus of Elasticity of soil (Es in kPa)
+    influence_factor: Shape and rigidity coefficient (If)
+    """
+    # Settlement formula: Se = (q * B * (1 - μ²) * If) / Es
+    se_meters = (pressure * width * (1 - (poisson_ratio ** 2)) * influence_factor) / elastic_modulus
+    
+    # Convert meters to millimeters for engineering readability
+    se_mm = se_meters * 1000
+    return se_mm
+
+# Example Execution
+q = 150.0          # Net foundation pressure (kN/m²)
+B = 2.0            # Footing width (meters)
+mu = 0.35          # Poisson's ratio for dense sand/stiff clay
+Es = 30000         # Soil elastic modulus (kN/m²)
+If = 1.12          # Influence factor for a flexible square footing
+
+settlement = immediate_settlement(q, B, mu, Es, If)
+
+print(f"--- Geotechnical Foundation Assessment ---")
+print(f"Footing Pressure: {q} kPa on a {B}mx{B}m area")
+print(f"Estimated Immediate Settlement: {settlement:.2f} mm")
+
+# Safety benchmark validation
+if settlement > 25.0:
+    print("⚠️ Attention: Settlement exceeds standard 25mm limit for isolated pads. Optimize footing size.")
+else:
+    print("✅ Structurally Sound: Settlement values fall within safe acceptable limits.")
