@@ -1,0 +1,10 @@
+def max_bending_moment(udl_load, length):
+    # Formula: (w * L^2) / 8
+    return (udl_load * (length ** 2)) / 8
+
+# Example Execution
+w = 15.0  # kN/m (Uniformly Distributed Load)
+L = 6.0   # meters (Span length)
+
+m_max = max_bending_moment(w, L)
+print(f"Maximum Bending Moment at mid-span: {m_max:.2f} kNm")
