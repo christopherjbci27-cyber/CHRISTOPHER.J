@@ -1,0 +1,3 @@
+def weir_discharge(cd, length, head):
+    return 1.705 * cd * length * (head ** 1.5)
+print(f"Spillway Capacity: {weir_discharge(0.62, 5.0, 1.2):.2f} m³/s")
