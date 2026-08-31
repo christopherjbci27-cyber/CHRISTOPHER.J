@@ -1,0 +1,3 @@
+def traffic_flow(density, space_mean_speed):
+    return density * space_mean_speed
+print(f"Traffic volume profile: {traffic_flow(40, 60)} vehicles/hour")
