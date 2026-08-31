@@ -1,0 +1,3 @@
+def pt_percentage(ast, b, d):
+    return (ast / (b * d)) * 100
+print(f"Steel ratio: {pt_percentage(1200, 300, 450):.2f}%")
