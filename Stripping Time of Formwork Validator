@@ -1,0 +1,5 @@
+def formwork_days(component_type, span=0):
+    if component_type == "wall_column": return "16-24 hours"
+    if component_type == "slab_soffit": return "3 days"
+    return "7 days" if span <= 4.5 else "14 days"
+print("Formwork removal:", formwork_days("slab_soffit"))
