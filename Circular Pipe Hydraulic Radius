@@ -1,0 +1,7 @@
+
+import math
+def circular_pipe_r(diameter):
+    area = (math.pi * diameter**2) / 4
+    perimeter = math.pi * diameter
+    return area / perimeter
+print(f"Hydraulic Radius: {circular_pipe_r(0.6):.3f} m")
