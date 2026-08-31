@@ -1,0 +1,4 @@
+def rational_runoff(c, i, area_hectares):
+    # Converts Hectares to m² and i (mm/hr) to discharge matrix limits
+    return (c * (i / 3600000) * (area_hectares * 10000))
+print(f"Peak runoff: {rational_runoff(0.4, 50, 2.5):.3f} m³/s")
