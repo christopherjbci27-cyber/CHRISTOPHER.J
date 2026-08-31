@@ -1,0 +1,3 @@
+def constant_head_k(q_vol, length, area, head, time_sec):
+    return (q_vol * length) / (area * head * time_sec)
+print(f"k value: {constant_head_k(500, 15, 78.5, 40, 300):.5f} cm/s")
