@@ -1,0 +1,3 @@
+def bearing_capacity_strip(c, q, b, nc, nq, ng, gamma):
+    return (c * nc) + (q * nq) + (0.5 * gamma * b * ng)
+print(f"Ultimate Bearing Capacity: {bearing_capacity_strip(20, 30, 2.0, 5.7, 1.0, 0, 18):.2f} kPa")
