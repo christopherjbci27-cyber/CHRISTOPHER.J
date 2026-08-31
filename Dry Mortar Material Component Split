@@ -1,0 +1,6 @@
+def mortar_volume_split(total_dry_vol, ratio_cement, ratio_sand):
+    total_parts = ratio_cement + ratio_sand
+    cement = (ratio_cement / total_parts) * total_dry_vol
+    sand = (ratio_sand / total_parts) * total_dry_vol
+    return cement, sand
+print("Cement/Sand required m³:", mortar_volume_split(1.5, 1, 4))
