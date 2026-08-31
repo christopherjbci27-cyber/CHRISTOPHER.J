@@ -1,0 +1,3 @@
+def pavement_check(traffic_msa, safety_limit=150):
+    return "Acceptable Design Matrix" if traffic_msa < safety_limit else "Requires Bound Base Base Modification"
+print(pavement_check(85))
