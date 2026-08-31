@@ -1,0 +1,3 @@
+def head_loss_friction(f, l, v, d, g=9.81):
+    return (f * l * v**2) / (2 * g * d)
+print(f"Head Loss: {head_loss_friction(0.02, 100, 1.5, 0.2):.3f} m")
