@@ -1,0 +1,3 @@
+def concrete_dead_load(volume, density=25.0): # 25 kN/m^3 for RCC
+    return volume * density
+print(f"Dead Load: {concrete_dead_load(0.3 * 0.45 * 6):.2f} kN")
