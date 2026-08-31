@@ -1,0 +1,3 @@
+def pump_power_kw(q_m3_per_sec, head_m, efficiency=0.75, gamma=9.81):
+    return (gamma * q_m3_per_sec * head_m) / efficiency
+print(f"Required Pump Power: {pump_power_kw(0.05, 15):.2f} kW")
