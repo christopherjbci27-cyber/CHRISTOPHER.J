@@ -1,0 +1,4 @@
+def liquefaction_fs(crr, csr):
+    fs = crr / csr
+    return fs, "Safe" if fs > 1.2 else "Risk of Liquefaction"
+print("Liquefaction check:", liquefaction_fs(0.25, 0.18))
