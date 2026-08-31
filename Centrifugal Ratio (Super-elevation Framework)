@@ -1,0 +1,4 @@
+def centrifugal_ratio(v_kmph, radius):
+    v_ms = v_kmph / 3.6
+    return (v_ms ** 2) / (9.81 * radius)
+print(f"Centrifugal Impact Factor: {centrifugal_ratio(100, 400):.3f}")
