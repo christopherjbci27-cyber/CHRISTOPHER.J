@@ -1,0 +1,5 @@
+def balanced_depth(mu_limit, fck, b):
+    # Calculates required effective depth (d) based on ultimate moment limit
+    import math
+    return math.sqrt(mu_limit * 10**6 / (0.138 * fck * b))
+print(f"Required depth: {balanced_depth(150, 25, 300):.2f} mm")
