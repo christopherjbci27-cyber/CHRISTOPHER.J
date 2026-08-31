@@ -1,0 +1,4 @@
+def effective_stress(total_stress, water_depth, current_depth):
+    pore_water_pressure = max(0.0, (current_depth - water_depth) * 9.81)
+    return total_stress - pore_water_pressure
+print(f"Effective Stress: {effective_stress(95.0, 2.0, 5.5):.2f} kPa")
