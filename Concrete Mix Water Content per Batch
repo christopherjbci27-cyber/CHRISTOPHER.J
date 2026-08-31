@@ -1,0 +1,4 @@
+def water_batch_litres(cement_bags, wc_ratio):
+    # 1 standard cement bag = 50 kg
+    return cement_bags * 50 * wc_ratio
+print(f"Water volume: {water_batch_litres(10, 0.45)} Litres")
