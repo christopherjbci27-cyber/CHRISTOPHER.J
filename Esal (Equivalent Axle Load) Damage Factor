@@ -1,0 +1,3 @@
+def axle_damage_factor(axle_load_kn, standard_load=80):
+    return (axle_load_kn / standard_load) ** 4
+print(f"Equivalent factor weight: {axle_damage_factor(110):.2f}")
