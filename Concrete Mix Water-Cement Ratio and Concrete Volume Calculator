@@ -1,0 +1,22 @@
+def calculate_concrete_volume(width, depth, length):
+    # Calculates volume of a rectangular beam or slab segment
+    return width * depth * length
+
+def check_wc_ratio(water_mass, cement_mass):
+    wc_ratio = water_mass / cement_mass
+    print(f"Calculated Water-Cement Ratio: {wc_ratio:.2f}")
+    
+    # Standard engineering safety check range
+    if 0.40 <= wc_ratio <= 0.60:
+        return "PASS: W/C ratio is optimal for structural concrete."
+    else:
+        return "WARN: W/C ratio is outside the ideal structural range (0.40 - 0.60)."
+
+# Example Execution
+b_width = 0.3   # meters
+b_depth = 0.6   # meters
+b_length = 5.0  # meters
+
+vol = calculate_concrete_volume(b_width, b_depth, b_length)
+print(f"Total Concrete Volume Needed: {vol:.3f} cubic meters")
+print(check_wc_ratio(water_mass=180, cement_mass=400))
