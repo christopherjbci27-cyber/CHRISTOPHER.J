@@ -1,0 +1,3 @@
+def degree_of_saturation(w_ratio, g_speed, e_void):
+    return (w_ratio * g_speed) / e_void
+print(f"Saturation Profile: {degree_of_saturation(0.18, 2.67, 0.65) * 100:.2f}%")
