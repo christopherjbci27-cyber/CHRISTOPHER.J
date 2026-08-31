@@ -1,0 +1,10 @@
+def calculate_porosity(void_ratio):
+    # Formula: n = e / (1 + e)
+    return void_ratio / (1 + void_ratio)
+
+# Example Execution
+e = 0.65  # Void ratio of the soil sample
+porosity = calculate_porosity(e)
+
+# Porosity is typically represented as a percentage
+print(f"Soil Porosity: {porosity * 100:.2f}%")
