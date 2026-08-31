@@ -1,0 +1,3 @@
+def degree_of_curve(radius):
+    return 1718.9 / radius
+print(f"Degree of Curve: {degree_of_curve(500):.2f}°")
