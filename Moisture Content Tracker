@@ -1,0 +1,3 @@
+def moisture_content(wet_mass, dry_mass):
+    return ((wet_mass - dry_mass) / dry_mass) * 100
+print(f"Water content: {moisture_content(150, 125):.2f}%")
