@@ -1,0 +1,38 @@
+def trapezoidal_channel_discharge(base_width, depth, side_slope, manning_n, bed_slope):
+    """
+    Calculates hydraulic flow discharge (Q) for a trapezoidal channel.
+    side_slope: horizontal run to 1 vertical (z:1)
+    bed_slope: longitudinal slope as a decimal (e.g., 0.001)
+    """
+    import math
+    
+    # 1. Cross-sectional Area of Flow (A)
+    # A = (b + z*y) * y
+    area = (base_width + (side_slope * depth)) * depth
+    
+    # 2. Wetted Perimeter (P)
+    # P = b + 2*y*sqrt(1 + z^2)
+    wetted_perimeter = base_width + (2 * depth * math.sqrt(1 + (side_slope ** 2)))
+    
+    # 3. Hydraulic Radius (R = A / P)
+    hydraulic_radius = area / wetted_perimeter
+    
+    # 4. Manning's Equation for Discharge (Q)
+    discharge = (1 / manning_n) * area * (hydraulic_radius ** (2/3)) * (bed_slope ** 0.5)
+    
+    print(f"--- Hydraulic Channel Properties ---")
+    print(f"Flow Area (A): {area:.3f} m²")
+    print(f"Wetted Perimeter (P): {wetted_perimeter:.3f} m")
+    print(f"Hydraulic Radius (R): {hydraulic_radius:.3f} m")
+    
+    return discharge
+
+# Example Execution
+b = 2.5       # Bottom channel width (meters)
+y = 1.2       # Water depth (meters)
+z = 1.5       # Side slope ratio 1.5H : 1V
+n = 0.015     # Manning's roughness coefficient (smooth concrete)
+s = 0.002     # Bed slope (0.2%)
+
+q_flow = trapezoidal_channel_discharge(base_width=b, depth=y, side_slope=z, manning_n=n, bed_slope=s)
+print(f"Total Volumetric Discharge (Q): {q_flow:.3f} m³/s")
