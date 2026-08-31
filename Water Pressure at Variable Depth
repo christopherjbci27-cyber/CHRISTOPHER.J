@@ -1,0 +1,3 @@
+def hydrostatic_pressure(depth, fluid_density=1000, g=9.81):
+    return (fluid_density * g * depth) / 1000 # returns kPa
+print(f"Pressure at 8m depth: {hydrostatic_pressure(8):.1f} kPa")
