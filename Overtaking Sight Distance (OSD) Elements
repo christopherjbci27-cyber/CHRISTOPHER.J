@@ -1,0 +1,2 @@
+def osd_d1(v_ms, reaction_time=2.0): return v_ms * reaction_time
+print(f"OSD Reaction Phase d1: {osd_d1(22.2):.2f} m")
