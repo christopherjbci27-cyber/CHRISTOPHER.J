@@ -1,0 +1,3 @@
+def concrete_elastic_modulus(fck):
+    return 5000 * (fck ** 0.5) # IS 456 standard formula
+print(f"Ec: {concrete_elastic_modulus(25):.0f} N/mm²")
