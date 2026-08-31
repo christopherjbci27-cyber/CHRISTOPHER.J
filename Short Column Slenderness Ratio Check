@@ -1,0 +1,4 @@
+def is_short_column(l_eff, lateral_dim):
+    ratio = l_eff / lateral_dim
+    return ratio, "Short" if ratio < 12 else "Slender"
+print("Column Classification:", is_short_column(3.2, 0.3))
