@@ -1,0 +1,5 @@
+import math
+def active_pressure_coeff(phi_degrees):
+    phi_rad = math.radians(phi_degrees)
+    return (1 - math.sin(phi_rad)) / (1 + math.sin(phi_rad))
+print(f"Ka: {active_pressure_coeff(30):.3f}")
