@@ -1,0 +1,4 @@
+def brick_estimator(wall_vol_m3, brick_v_with_mortar=0.002):
+    net_bricks = wall_vol_m3 / brick_v_with_mortar
+    return int(net_bricks * 1.10) # 10% safety wastage factored
+print(f"Total bricks required: {brick_estimator(25)} nos.")
