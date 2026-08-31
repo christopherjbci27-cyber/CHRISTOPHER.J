@@ -1,0 +1,4 @@
+import math
+def froude_number(velocity, hydraulic_depth, g=9.81):
+    return velocity / math.sqrt(g * hydraulic_depth)
+print(f"Froude Number: {froude_number(2.5, 0.8):.2f}")
