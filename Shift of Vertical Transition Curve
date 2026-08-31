@@ -1,0 +1,3 @@
+def vertical_curve_shift(length, radius):
+    return (length ** 2) / (24 * radius)
+print(f"Curve transition shift: {vertical_curve_shift(60, 300):.3f} m")
