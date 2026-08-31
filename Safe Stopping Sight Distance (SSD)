@@ -1,0 +1,6 @@
+def stopping_sight_distance(v_kmph, f_friction=0.35, t_reaction=2.5):
+    v_ms = v_kmph / 3.6
+    lag_dist = v_ms * t_reaction
+    braking_dist = (v_ms ** 2) / (2 * 9.81 * f_friction)
+    return lag_dist + braking_dist
+print(f"Required SSD: {stopping_sight_distance(80):.2f} m")
