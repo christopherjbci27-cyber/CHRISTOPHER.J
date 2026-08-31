@@ -1,0 +1,4 @@
+def flow_regime(velocity, pipe_diameter, kinematic_viscosity=1e-6):
+    re = (velocity * pipe_diameter) / kinematic_viscosity
+    return re, "Laminar" if re < 2000 else "Turbulent" if re > 4000 else "Transitional"
+print("Regime:", flow_regime(1.2, 0.15))
